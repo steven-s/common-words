@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+
+import argparse
+
+parser = argparse.ArgumentParser(description='Validate vector space contains desired vocabulary')
+parser.add_argument('vector_file_loc', metavar='VECTOR_FILE_LOCATION', help='vector space file in text representation')
+parser.add_argument('vocab_file_loc', metavar='VOCAB_FILE_LOCATION', help='vocabulary file, newline delimited')
+
+args = parser.parse_args()
+
+vocab_entries = dict()
+with open(args.vector_file_loc) as f:
+    for line in f:
+        entry = line.split()
+        vocab_entries[entry[0]] = 1
+
+missing_words = list()
+with open(args.vocab_file_loc) as f:
+    for entry in f:
+        entry = entry.strip('\n').replace('.', '').lower()
+        if entry not in vocab_entries:
+            missing_words.append(entry)
+
+if len(missing_words) > 0:
+    print("Found {} missing vocabulary terms:".format(len(missing_words)))
+    for entry in missing_words:
+        print(entry.strip('\n'))
+else:
+    print("All vocabulary accounted for")
+
