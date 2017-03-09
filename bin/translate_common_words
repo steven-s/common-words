@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+import argparse
+from common_words.common_word_translator import CommonWordTranslator
+
+
+parser = argparse.ArgumentParser(description='Replace uncommon with the 1000 \
+        most common words')
+parser.add_argument('vector_file', metavar='VECTOR_FILE',
+                    help='word embedding vector file in text representation')
+parser.add_argument('common_words_file', metavar='COMMON_WORDS_FILE',
+                    help='common words file, newline delimited')
+parser.add_argument('source_text', metavar='SOURCE_TEXT',
+                    help='text to be translated')
+parser.add_argument('output', metavar='OUTPUT',
+                    help='where to write the translation')
+args = parser.parse_args()
+
+translator = CommonWordTranslator(args.common_words_file, args.vector_file)
+
+with open(args.source_text, 'r') as f, open(args.output, 'w') as out:
+    text = f.read()
+    translation, replacements, processed_words, processed_sentences = translator.translate(text)
+    print('replaced {} words from {} in {} sentences'.format(replacements, 
+          processed_words, processed_sentences))
+    out.write(translation)

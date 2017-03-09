@@ -18,6 +18,9 @@ class WordEmbedding:
     def __len__(self):
         return len(self.entries)
 
+    def __contains__(self, key):
+        return key in self.entries
+
     def vocabulary(self):
         return self.entries.keys()
 
