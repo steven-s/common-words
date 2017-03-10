@@ -8,6 +8,11 @@ This program is provided as a python package and can be installed through the co
     
     python setup.py install
 
+#### Dependencies
+Dependences are provided in the `requirements.txt` file and can be installed with pip:
+
+    pip install -r requirements.txt
+
 ## Translating text
 To translate a text file, use the `translate_common_words` script located under `bin`. This script requires a 
 *word embedding* (in text format), a *common words dictionary*, an *input text file* to be translated, 
