@@ -9,13 +9,13 @@ This program is provided as a python package and can be installed through the co
     python setup.py install
 
 ## Translating text
-To translate a text file, use the `translate_common_word` script located under `bin`. This script requires a 
+To translate a text file, use the `translate_common_words` script located under `bin`. This script requires a 
 *word embedding* (in text format), a *common words dictionary*, an *input text file* to be translated, 
 and an *output destination*.
 
 #### Translation Command Example
 
-    prompt$ ./bin/translate_common_words data/text9.vec data/1000.dicin ~/Downloads/pg345.txt ~/Downloads/output.txt
+    prompt$ ./bin/translate_common_words data/text9.vec data/1000.dicin input.txt output.txt
     Setting up translator...
     Reading source...
     Translating text...
@@ -35,7 +35,3 @@ Feel free to generate your own and use it in translations instead.
 As mentioned in the translation section, it only replaces words that can be found in the word embedding. It also
 does not attempt to maintain any kind of fluency, and does not account for groups of words that should be considered
 for joint replacement. These limitations, however, do reuslt in quirky, sometimes comedic output.
-
-[1] http://splasho.com/upgoer5/phpspellcheck/dictionaries/1000.dicin
-[2] https://xkcd.com/thing-explainer/
-[3] https://github.com/facebookresearch/fastText
