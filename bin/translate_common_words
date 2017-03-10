@@ -16,11 +16,11 @@ parser.add_argument('output', metavar='OUTPUT',
                     help='where to write the translation')
 args = parser.parse_args()
 
-print("Setting up translator...")
+print('Setting up translator...')
 translator = CommonWordTranslator(args.common_words_file, args.vector_file)
-print("Reading source...")
+print('Reading source...')
 with open(args.source_text, 'r') as f, open(args.output, 'w') as out:
-    print("Translating text...")
+    print('Translating text...')
     total_replacements = 0
     total_words = 0
     total_sentences = 0
@@ -31,7 +31,10 @@ with open(args.source_text, 'r') as f, open(args.output, 'w') as out:
         total_replacements += replacements
         total_words += processed_words
         total_sentences += processed_sentences
-
+        print('Replaced {} words from {} in {} sentences'.format(total_replacements, 
+              total_words, total_sentences), end='\r')
     print('Replaced {} words from {} in {} sentences'.format(total_replacements, 
-          total_words, total_sentences))
+              total_words, total_sentences))
+    print('Writing translation...')
     out.write('\n'.join(lines))
+    print('Done')
