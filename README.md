@@ -39,4 +39,4 @@ Feel free to generate your own and use it in translations instead.
 ## Limitations
 As mentioned in the translation section, it only replaces words that can be found in the word embedding. It also
 does not attempt to maintain any kind of fluency, and does not account for groups of words that should be considered
-for joint replacement. These limitations, however, do reuslt in quirky, sometimes comedic output.
+for joint replacement. These limitations, however, do result in quirky, sometimes comedic output.
